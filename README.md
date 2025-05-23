@@ -1,16 +1,16 @@
 # Facial Emotion Recognition with CNN
 
-This project focuses on building a Convolutional Neural Network (CNN) from scratch using only NumPy to classify facial emotions. The goal is to deeply understand the mechanics of CNNs by implementing the full image processing and training pipeline manually—without relying on high-level deep learning libraries like TensorFlow or PyTorch.
+This project focuses on building a Convolutional Neural Network (CNN) from scratch using only NumPy to classify facial emotions. The goal is to deeply understand the mechanics of CNNs by implementing the full image processing and training pipeline manually, without relying on high-level deep learning libraries like TensorFlow or PyTorch.
 
 ## 🔍 Objective
 
 - Perform facial emotion recognition on grayscale and color images.
-- **Implement Convolutional Neural Networks (CNNs) entirely from scratch using only NumPy** – no PyTorch, TensorFlow, or other deep learning frameworks.
+- **Implement Convolutional Neural Networks (CNNs) entirely from scratch using only NumPy.**
 - Experiment with multiple CNN architectures:
   - Single kernel CNN
   - Multi-kernel CNN
   - Multi-layer CNN
-- Evaluate model performance using metrics like accuracy and confusion matrix.
+- Evaluate model performance using metrics like accuracy and the confusion matrix.
 
 ## 🗃 Dataset
 
@@ -18,7 +18,7 @@ This project focuses on building a Convolutional Neural Network (CNN) from scrat
 - **Classes Used**: Angry, Happy, Neutral, Sad, Surprise
 - **Preprocessing**:
   - Resized to 48×48 pixels
-  - Stored in both grayscale and color format
+  - Stored in both grayscale and color formats
   - Limited to 1000 images per class
 
 ## 🧱 Project Structure
@@ -61,4 +61,4 @@ python image_processor.py
 
 ## 📄 License
 
-This project is for educational purposes and does not include any proprietary datasets or pre-trained models.
+This project is for educational purposes and includes no proprietary datasets or pre-trained models.
