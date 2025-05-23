@@ -27,7 +27,7 @@ class ImageProcessor:
             self.label_dict[label] = idx
 
         self.image_size = (48, 48)
-        self.image_limit = 100
+        self.image_limit = 1000
 
     def create_directories(self):
         os.makedirs(self.gray_data_path, exist_ok=True)
