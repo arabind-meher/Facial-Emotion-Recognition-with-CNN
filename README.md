@@ -17,40 +17,50 @@ This project focuses on building a Convolutional Neural Network (CNN) from scrat
 - **Source**: [Emotion Recognition Dataset on Kaggle](https://www.kaggle.com/datasets/sujaykapadnis/emotion-recognition-dataset)
 - **Classes Used**: Angry, Happy, Neutral, Sad, Surprise
 - **Preprocessing**:
-  - Resized to 48×48 pixels
+  - Resized to 48×48 pixels (configurable)
   - Stored in both grayscale and color format
-  - Limited to 1000 images per class
+  - Limited to 1000 images per class (configurable)
 
 ## 🧱 Project Structure
 
 ```
 Facial-Emotion-Recognition-with-CNN/
 │
-├── downloader.py          # Kaggle dataset downloader and extractor
-├── image_processor.py     # Preprocess raw data into grayscale and RGB image sets
-├── file_system.py         # Utility to read directories and files
-├── raw_data/              # Extracted original dataset
 ├── dataset/
-│   ├── gray_data/         # Grayscale processed images
-│   └── color_data/        # Color processed images
-└── README.md              # Project overview and instructions
+│   ├── gray_data/            # Grayscale processed images
+│   └── color_data/           # Color processed images
+├── download/                 # Downloaded zip files from Kaggle
+├── raw_data/                 # Extracted dataset before processing
+├── scripts/
+│   ├── downloader.py         # Kaggle dataset downloader
+│   ├── image_processor.py    # Image preprocessing with resizing, format conversion
+│   ├── file_system.py        # Directory and file utilities
+├── prepare_dataset.ps1       # Script to automate download and processing
+├── README.md
+├── requirements.txt
+└── .gitignore
 ```
 
 ## 🚀 Getting Started
 
 1. **Install requirements** (Kaggle API must be configured):
 ```bash
-pip install kaggle pillow tqdm
+pip install -r requirements.txt
 ```
 
 2. **Download and Extract Dataset**:
 ```bash
-python downloader.py --dataset sujaykapadnis/emotion-recognition-dataset
+python scripts/downloader.py --dataset sujaykapadnis/emotion-recognition-dataset
 ```
 
 3. **Preprocess Images**:
 ```bash
-python image_processor.py
+python scripts/image_processor.py --read-from raw_data/dataset --write-to dataset --size 48 48 --limit 1000
+```
+
+4. **Or run everything at once (Windows)**:
+```bash
+.\prepare_dataset.ps1
 ```
 
 ## 📌 Next Steps
