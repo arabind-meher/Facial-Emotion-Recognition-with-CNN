@@ -10,8 +10,10 @@ dataset/
 download/
 raw_data/
 test_data/
+framework/
 
 data.zip
+dataset.zip
 eda.ipynb
 files.csv
 files.json

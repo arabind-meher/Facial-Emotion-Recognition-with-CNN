@@ -1,5 +1,6 @@
 import os
 import random
+import argparse
 
 from PIL import Image
 from tqdm import tqdm
@@ -8,12 +9,7 @@ from utils import read_dirs, read_files
 
 
 class ImageProcessor:
-    def __init__(
-        self,
-        read_from: str = "raw_data/dataset",
-        write_to: str = "dataset",
-        seed: int = 0,
-    ):
+    def __init__(self, read_from: str, write_to: str, seed: int = 0):
         random.seed(seed)
         self.raw_data_path = read_from
 
@@ -75,5 +71,23 @@ class ImageProcessor:
 
 
 if __name__ == "__main__":
-    image_processor = ImageProcessor()
-    image_processor.run()
+    parser = argparse.ArgumentParser(description="Preprocess emotion dataset images.")
+    parser.add_argument(
+        "--read-from", type=str, default="raw_data/dataset", help="Path to raw dataset"
+    )
+    parser.add_argument(
+        "--write-to",
+        type=str,
+        default="dataset",
+        help="Directory to save processed images",
+    )
+    parser.add_argument(
+        "--seed", type=int, default=0, help="Random seed for reproducibility"
+    )
+
+    args = parser.parse_args()
+
+    processor = ImageProcessor(
+        read_from=args.read_from, write_to=args.write_to, seed=args.seed
+    )
+    processor.run()
