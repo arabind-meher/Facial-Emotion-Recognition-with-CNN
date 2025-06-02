@@ -25,12 +25,12 @@ class ImageProcessor:
         self.create_directories()
 
         self.dir_labels = ["Angry", "Happy", "Neutral", "Sad", "Surprise"]
-        self.label_dict = dict()
-        for idx, label in enumerate(self.dir_labels):
-            self.label_dict[label] = idx
+        # self.label_dict = dict()
+        # for idx, label in enumerate(self.dir_labels):
+        #     self.label_dict[label] = idx
 
-        self.image_size = (48, 48)
-        self.image_limit = 1000
+        self.image_size = size
+        self.image_limit = limit
 
     def create_directories(self):
         os.makedirs(self.gray_data_path, exist_ok=True)
@@ -64,17 +64,24 @@ class ImageProcessor:
         image.save(file_path)
 
     def process_images(self, files: list, label: str):
-        label_id = self.label_dict[label]
+        # label_id = self.label_dict[label]
+        gray_label_data_path = os.path.join(self.gray_data_path, label)
+        os.makedirs(gray_label_data_path, exist_ok=True)
+
+        color_label_data_path = os.path.join(self.color_data_path, label)
+        os.makedirs(color_label_data_path, exist_ok=True)
+
         for idx, file in tqdm(
             enumerate(files), desc=f"{label:10s}", unit="img", total=self.image_limit
         ):
-            filename = self.generate_name(label_id, idx)
+            # filename = self.generate_name(label_id, idx)
+            filename = f"{idx:04d}.jpg"
 
             gray_image = self.read_image(file)
-            self.save_image(gray_image, self.gray_data_path, filename)
+            self.save_image(gray_image, gray_label_data_path, filename)
 
             color_image = self.read_image(file, grayscale=False)
-            self.save_image(color_image, self.color_data_path, filename)
+            self.save_image(color_image, color_label_data_path, filename)
 
 
 if __name__ == "__main__":
