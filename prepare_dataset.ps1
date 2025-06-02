@@ -12,8 +12,8 @@ $height = 48
 $limit = 100
 
 # Step 1: Download and extract dataset
-# Write-Host "`n--- Downloading and extracting dataset ---`n"
-# python scripts/downloader.py --dataset $datasetId --download-dir $downloadDir --extract-to $extractDir
+Write-Host "`n--- Downloading and extracting dataset ---`n"
+python scripts/downloader.py --dataset $datasetId --download-dir $downloadDir --extract-to $extractDir
 
 # Step 2: Run image processor with all arguments
 Write-Host "`n--- Preprocessing images ---`n"
